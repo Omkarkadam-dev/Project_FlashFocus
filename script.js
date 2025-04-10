@@ -88,3 +88,20 @@ function revealTestimonials() {
 
 window.addEventListener('scroll', revealTestimonials);
 window.addEventListener('load', revealTestimonials);
+
+
+const chooseCards = document.querySelectorAll('.choose-card');
+
+function showChooseCards() {
+  const triggerBottom = window.innerHeight * 0.9;
+
+  chooseCards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < triggerBottom) {
+      card.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', showChooseCards);
+window.addEventListener('load', showChooseCards);

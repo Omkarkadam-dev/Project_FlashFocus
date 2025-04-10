@@ -118,3 +118,40 @@ toggle.addEventListener('change', () => {
       : price.getAttribute('data-monthly');
   });
 });
+
+
+// Typewriter Text
+const typedText = document.getElementById("typed-text");
+const introLines = [
+  "Hi, I'm Omkar Kadam 👋",
+  "Web Developer & UI Enthusiast 🚀",
+  "Building Study Tools That Work 📚"
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+let currentLine = "";
+let isDeleting = false;
+
+function type() {
+  currentLine = introLines[lineIndex];
+
+  if (isDeleting) {
+    typedText.textContent = currentLine.substring(0, charIndex--);
+  } else {
+    typedText.textContent = currentLine.substring(0, charIndex++);
+  }
+
+  if (!isDeleting && charIndex === currentLine.length) {
+    isDeleting = true;
+    setTimeout(type, 1000);
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    lineIndex = (lineIndex + 1) % introLines.length;
+    setTimeout(type, 500);
+  } else {
+    setTimeout(type, isDeleting ? 50 : 100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", type);

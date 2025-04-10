@@ -162,4 +162,20 @@ function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: 'smooth' });
   }
+
+ // Scroll to Top Button
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  
+  // Dummy subscribe handler
+  function subscribe() {
+    const email = document.querySelector('.footer-newsletter input').value;
+    if (email) {
+      alert(`🎉 Thanks for subscribing, ${email}!`);
+      document.querySelector('.footer-newsletter input').value = "";
+    } else {
+      alert("Please enter your email address.");
+    }
+  }
   

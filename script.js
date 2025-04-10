@@ -105,3 +105,16 @@ function showChooseCards() {
 
 window.addEventListener('scroll', showChooseCards);
 window.addEventListener('load', showChooseCards);
+
+
+// Toggle Monthly / Yearly Pricing
+const toggle = document.getElementById('billingToggle');
+const prices = document.querySelectorAll('.price');
+
+toggle.addEventListener('change', () => {
+  prices.forEach(price => {
+    price.textContent = toggle.checked
+      ? price.getAttribute('data-yearly')
+      : price.getAttribute('data-monthly');
+  });
+});

@@ -70,3 +70,21 @@ categorySelector.addEventListener("change", (e) => {
   flashcard.querySelector(".front").innerText = demoData[selected].front;
   flashcard.querySelector(".back").innerText = demoData[selected].back;
 });
+
+
+// Reveal testimonial cards on scroll
+const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+function revealTestimonials() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  testimonialCards.forEach(card => {
+    const top = card.getBoundingClientRect().top;
+    if (top < triggerBottom) {
+      card.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealTestimonials);
+window.addEventListener('load', revealTestimonials);

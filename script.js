@@ -41,3 +41,32 @@ const revealSteps = () => {
 window.addEventListener('scroll', revealSteps);
 window.addEventListener('load', revealSteps);
 
+
+const flashcard = document.getElementById("flashcard");
+const categorySelector = document.getElementById("category");
+
+const demoData = {
+  tech: {
+    front: "What is JavaScript?",
+    back: "A programming language used for web development.",
+  },
+  history: {
+    front: "Who was Napoleon?",
+    back: "A French military leader who became emperor.",
+  },
+  science: {
+    front: "What is H2O?",
+    back: "The chemical formula for water.",
+  },
+};
+
+function flipCard() {
+  flashcard.classList.toggle("flip");
+}
+
+categorySelector.addEventListener("change", (e) => {
+  const selected = e.target.value;
+  flashcard.classList.remove("flip"); // reset
+  flashcard.querySelector(".front").innerText = demoData[selected].front;
+  flashcard.querySelector(".back").innerText = demoData[selected].back;
+});
